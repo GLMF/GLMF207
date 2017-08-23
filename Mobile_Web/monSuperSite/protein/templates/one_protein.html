@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="col-md-12">
+<h1>Protein details</h1>
+    <dl class="dl-horizontal">
+    <dt>Protein: </dt><dd>{{ protein.name }}</dd>
+    <dt>Description: </dt><dd>{{ protein.description }}</dd>
+    <dt>Gene:</dt><dd> {{ protein.gene }}</dd>
+    </dl>
+</div>
+<div class="col-md-12">
+<h1>Ligands binding to this protein</h1>
+    <ul>
+    {% for l in ligands %}
+    <li><a href="https://pubchem.ncbi.nlm.nih.gov/compound//{{l.pubchem_id}}">{{l.common_name}}</a></li>{% endfor %}
+    </ul>
+</div>
+<div class="col-md-12">
+<h1>Structures associated</h1>
+    <ul>
+    {% for m in molecules %}
+    <li><a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=/{{m.pdb_code}}">{{m.description}}</a></li>{% endfor %}
+    </ul>
+</div>
+
+</div>
+{% endblock %}
